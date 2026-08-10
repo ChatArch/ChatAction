@@ -1,0 +1,8 @@
+include README.md
+include README.en.md
+include CHANGELOG.md
+include DEVELOP.md
+include AGENTS.md
+include LICENSE
+include mkdocs.yml
+recursive-include docs *.md
