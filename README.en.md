@@ -6,39 +6,58 @@
 
 <div align="center">
 
-[English](README.en.md) | [简体中文](README.md)
+[English](README.en.md) | [简体中文](README.md) | [Documentation](https://arch.gh.wzhecnu.cn/ChatAction/)
 </div>
 
 # ChatAction
 
-ChatAction: ChatArch placeholder package for PyPI name registration.
+ChatAction is the ChatArch action-orchestration command surface. The current version provides a stable base CLI contract: `--version` and `--tree`, generated from the real Click command registry.
 
 ## Quick Start
 
 ```bash
-pip install -e ".[dev]"
-chataction --help
+pip install ChatAction
 chataction --version
+chataction --tree
+```
+
+Development verification:
+
+```bash
+pip install -e ".[dev,docs]"
 python -m pytest -q
+mkdocs build --strict
 python -m build
+```
+
+## CLI Tree
+
+```text
+chataction  # ChatAction action orchestration CLI.
+├── --help  # Show this help message.
+├── --version  # Show the installed package version.
+└── --tree  # Print the registered command tree.
 ```
 
 ## CLI Contract
 
-This template depends on `chatstyle>=0.1.0,<0.2.0` and `chatenv>=0.2.0,<0.3.0`. New commands should prefer:
+The package does not expose a template `hello` command or documentation-only pseudo action commands. Future real actions should update these surfaces together:
 
-- `CommandSchema` / `CommandField` for inputs.
-- `add_interactive_option()` for the shared `-i/-I` switch.
-- `resolve_command_inputs()` for missing args, defaults, TTY behavior, and validation.
-- Generate `config.py` and a `chatenv.configs` entry point by default so the package is ChatEnv-discoverable; use `--without-chatenv-provider` only when ChatEnv integration is intentionally not needed.
+- reusable Python API;
+- Click command registration;
+- `chataction --tree` output;
+- CLI tests;
+- README, MkDocs, and CHANGELOG.
+
+Dependency windows: `chatstyle>=0.1.1,<0.2.0`, `chatenv>=0.2.3,<0.3.0`.
+
+## Documentation
+
+- Documentation: https://arch.gh.wzhecnu.cn/ChatAction/
+- CLI tree: https://arch.gh.wzhecnu.cn/ChatAction/cli-tree/
 
 ## Layout
 
 - `src/`: package source code
-- `tests/code-tests/`: code tests and migrated historical tests
-- `tests/cli-tests/`: real CLI tests, doc-first
-- `tests/mock-cli-tests/`: mock/fake CLI tests, doc-first
-
-## Development Notes
-
-See `DEVELOP.md` and `AGENTS.md` before expanding the scaffold.
+- `tests/`: CLI and version tests
+- `docs/`: MkDocs documentation source
