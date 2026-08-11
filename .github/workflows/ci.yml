@@ -34,6 +34,11 @@ jobs:
       - name: Build docs
         run: mkdocs build --strict
 
+      - name: Smoke installed CLI
+        run: |
+          chataction --version
+          chataction --tree
+
       - name: Build distributions
         run: python -m build
 

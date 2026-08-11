@@ -41,3 +41,11 @@ def test_template_hello_command_is_not_registered():
     assert "hello" not in tree_result.output.lower()
     assert missing_result.exit_code != 0
     assert "No such command" in missing_result.output
+
+
+def test_tree_root_uses_public_console_command_even_in_python_module_mode():
+    result = CliRunner().invoke(main, ["--tree"], prog_name="python -m chataction.cli")
+
+    assert result.exit_code == 0, result.output
+    assert result.output.splitlines()[0] == "chataction  # ChatAction action orchestration CLI."
+    assert "python -m chataction.cli" not in result.output

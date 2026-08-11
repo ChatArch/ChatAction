@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 - 2026-08-12
+
+### Changed
+- Keep `chataction --tree` rooted at the public console command name even when invoked through `python -m chataction.cli`.
+- Enable the MkDocs Material emoji renderer (`pymdownx.emoji` with Material `twemoji`/`to_svg`) for bilingual public docs.
+- Harden tag-driven PyPI publishing with package-version, default-branch, and PyPI exact-version guards.
+- Add CI smoke checks for installed `chataction --version` and `chataction --tree`.
+
 ## 0.1.1 - 2026-08-10
 
 ### Added
