@@ -1,6 +1,6 @@
 # ChatAction
 
-ChatAction is the ChatArch action-orchestration command surface. The current package is intentionally minimal: it provides a stable top-level CLI entry point, version readback, and command-tree readback. Future action capabilities must appear in the runtime tree, tests, and documentation together.
+ChatAction is the ChatArch action-orchestration command surface. The current package is intentionally minimal: it provides a stable top-level CLI entry point, version readback, and detailed/brief command-tree readback through the shared ChatStyle runtime. Future action capabilities must appear in the runtime tree, tests, and documentation together.
 
 <div class="grid cards" markdown>
 
@@ -8,7 +8,7 @@ ChatAction is the ChatArch action-orchestration command surface. The current pac
 
     ---
 
-    Use `chataction --tree` to audit the commands exposed by the installed version.
+    Use `chataction --tree` for command parameter signatures or `chataction --tree-brief` for a signature-free overview.
 
 -   **Install and verify**
 
@@ -30,6 +30,7 @@ ChatAction is the ChatArch action-orchestration command surface. The current pac
 pip install ChatAction
 chataction --version
 chataction --tree
+chataction --tree-brief
 ```
 
 Development install:
@@ -45,7 +46,8 @@ mkdocs build --strict
 | Capability | Status | Notes |
 | --- | --- | --- |
 | Top-level `--version` | Implemented | Prints the installed package version. |
-| Top-level `--tree` | Implemented | Renders the current CLI tree from the Click command object. |
+| Top-level `--tree` | Implemented | Uses ChatStyle to render the Click command tree with parameter signatures by default. |
+| Top-level `--tree-brief` | Implemented | Omits parameter signatures while preserving command nodes and descriptions. |
 | Business action commands | Not implemented | Future real actions must update tests, README, MkDocs, and changelog together. |
 
 ## Next {#next}

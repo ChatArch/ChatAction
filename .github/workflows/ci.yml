@@ -38,6 +38,7 @@ jobs:
         run: |
           chataction --version
           chataction --tree
+          chataction --tree-brief
 
       - name: Build distributions
         run: python -m build
