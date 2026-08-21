@@ -11,7 +11,7 @@
 
 # ChatAction
 
-ChatAction is the ChatArch action-orchestration command surface. The current version provides a stable base CLI contract: `--version` and `--tree`, generated from the real Click command registry.
+ChatAction is the ChatArch action-orchestration command surface. The current version provides a stable base CLI contract: `--version` plus `--tree` / `--tree-brief`, generated from the real Click command registry by the shared ChatStyle runtime.
 
 ## Quick Start
 
@@ -19,6 +19,7 @@ ChatAction is the ChatArch action-orchestration command surface. The current ver
 pip install ChatAction
 chataction --version
 chataction --tree
+chataction --tree-brief
 ```
 
 Development verification:
@@ -33,11 +34,14 @@ python -m build
 ## CLI Tree
 
 ```text
-chataction  # ChatAction action orchestration CLI.
-├── --help  # Show this help message.
-├── --version  # Show the installed package version.
-└── --tree  # Print the registered command tree.
+chataction
+├── --help  # Show this message and exit.
+├── --version  # Show the version and exit.
+├── --tree  # Print the registered CLI tree and exit.
+└── --tree-brief  # Print the registered CLI tree without parameter signatures and exit.
 ```
+
+`--tree` includes parameter signatures for registered subcommands by default. `--tree-brief` omits those signatures while preserving command nodes and descriptions. Because the package does not yet register business subcommands, both modes currently contain the same top-level option nodes.
 
 ## CLI Contract
 
@@ -45,11 +49,11 @@ The package does not expose a template `hello` command or documentation-only pse
 
 - reusable Python API;
 - Click command registration;
-- `chataction --tree` output;
+- `chataction --tree` and `chataction --tree-brief` output;
 - CLI tests;
 - README, MkDocs, and CHANGELOG.
 
-Dependency windows: `chatstyle>=0.1.1,<0.2.0`, `chatenv>=0.2.3,<0.3.0`.
+Dependency windows: `chatstyle>=0.2.0,<0.3.0`, `chatenv>=0.2.10,<0.3.0`.
 
 ## Documentation
 

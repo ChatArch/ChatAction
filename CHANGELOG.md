@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.3 - 2026-08-21
+
+### Added
+- Add `chataction --tree-brief` for command trees without parameter signatures while retaining command nodes and descriptions.
+
+### Changed
+- Migrate the top-level tree flags to ChatStyle's shared `add_tree_option()` runtime and keep the public root name `chataction`.
+- Keep parameter signatures in the default `chataction --tree` output.
+- Update dependency windows to `chatstyle>=0.2.0,<0.3.0` and `chatenv>=0.2.10,<0.3.0`.
+
 ## 0.1.2 - 2026-08-12
 
 ### Changed
@@ -15,7 +25,7 @@
 - Add MkDocs command-tree documentation with Chinese and English pages.
 
 ### Changed
-- Update ChatArch internal dependency lower bounds to `chatstyle>=0.1.1,<0.2.0` and `chatenv>=0.2.3,<0.3.0`.
+- Establish bounded ChatArch runtime dependencies for ChatStyle and ChatEnv.
 - Document that template `hello` and documentation-only action commands are not part of the real CLI surface.
 
 ## 0.1.0 - 2026-07-05

@@ -2,8 +2,9 @@
 
 ## CLI Rules
 
-- Use `chatstyle>=0.1.1,<0.2.0` and `chatenv>=0.2.3,<0.3.0` as the canonical CLI interaction runtime.
-- Preserve top-level `--version` and `--tree`; `--tree` must render from the registered Click command object.
+- Use `chatstyle>=0.2.0,<0.3.0` and `chatenv>=0.2.10,<0.3.0` as the canonical CLI interaction runtime.
+- Attach ChatStyle's `add_tree_option()` to the top-level Click group and keep the public tree root named `chataction`.
+- Preserve top-level `--version`, `--tree`, and `--tree-brief`; the default tree includes parameter signatures, while the brief tree omits signatures but keeps command nodes and descriptions.
 - Do not add template `hello` or documentation-only pseudo action commands.
 - Prefer `CommandSchema`, `CommandField`, `add_interactive_option()`, and `resolve_command_inputs()` for new commands.
 - Missing required args should auto-enter interactive mode when recoverable.
